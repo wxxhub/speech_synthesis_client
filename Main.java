@@ -4,14 +4,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
 
-
-        String content="快点起床";
-        String filePath =Request.sendRequest(content);
-        Player player = new Player();
-        player.Play(filePath);
-
+        String savePath ="C:\\Users\\ADMIN\\Desktop\\语音\\1.wav";
         Client client = new Client();
-        // client.Test();
-        client.Generate("你好世界");
+        client.generate("你好",savePath);
+        client.test(savePath);
+
     }
 }

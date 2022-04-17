@@ -1,18 +1,14 @@
 package src;
 
 public class Client {
-    public void Test() {
+    public void test(String savePath) {
         System.out.println("This is Client");
-
-        Request request = new Request();
-        request.Get();
-
         Player player = new Player();
-        player.Play("");
+        player.Play(savePath);
     }
 
-    public void Generate(String content) {
+    public void generate(String content,String savePath) {
         Request request = new Request();
-        request.GetWav("");
+        request.getWav(content,savePath);
     }
 }
