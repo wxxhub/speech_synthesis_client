@@ -49,6 +49,7 @@ public class Request {
                     fos.write(buf, 0, len);
                 }
                 fos.close();
+                return filePath;
             }
         } catch (IOException e) {
             e.printStackTrace();

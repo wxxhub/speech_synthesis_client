@@ -3,10 +3,13 @@ package src;
 public class Client {
     public void Test() {
         System.out.println("This is Client");
-        Request request = new Request();
-        request.Get();
-        
+        String content="快点起床啦啦啦啦啦";
+        String filePath =Request.sendRequest(content);
         Player player = new Player();
-        player.Play("");
+        player.Play(filePath);
+
+        
+
+
     }
 }
