@@ -9,7 +9,7 @@ import javax.sound.sampled.SourceDataLine;
 public class Player {
     public boolean Play(String file) {
 
-//        System.out.println("This is Player");
+        System.out.println("This is Player");
         try {
             System.out.println(file);
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(file));
