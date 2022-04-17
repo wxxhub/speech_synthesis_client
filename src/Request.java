@@ -18,11 +18,11 @@ public class Request {
     }
 
 
-    public  void getWav(String content,String savePath) {
+    public  void getWav(String content,String savePath,String urlPath) {
         HttpURLConnection con = null;
 
         try {
-            String  urlPath ="http://127.0.0.1:8888/speech_synthesis";
+//            String  urlPath ="http://127.0.0.1:8888/speech_synthesis";
             URL url = new URL(urlPath);
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");

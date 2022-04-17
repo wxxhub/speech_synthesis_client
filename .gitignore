@@ -10,5 +10,5 @@
 /dataSources/
 /dataSources.local.xml
 /out
-/idea
+/.idea
 *.xml

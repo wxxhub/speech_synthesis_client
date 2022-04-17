@@ -7,8 +7,8 @@ public class Client {
         player.Play(savePath);
     }
 
-    public void generate(String content,String savePath) {
+    public void generate(String content,String savePath,String url) {
         Request request = new Request();
-        request.getWav(content,savePath);
+        request.getWav(content,savePath,url);
     }
 }
