@@ -7,11 +7,14 @@ import java.io.IOException;
 import javax.sound.sampled.DataLine.Info;
 import javax.sound.sampled.SourceDataLine;
 public class Player {
-    public boolean Play(String file) {
+    //读取本地文件，播放语音
+    public boolean play(String file) {
 
         System.out.println("This is Player");
         try {
-            System.out.println(file);
+//            System.out.println(file);
+            boolean loop = false;
+
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(file));
             AudioFormat audioFormat = audioInputStream.getFormat();
             System.out.println("采样率:"+audioFormat.getSampleRate());
