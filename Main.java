@@ -21,13 +21,20 @@ public class Main {
                     System.out.println("content=" + content);
                 }
                 if (arg.matches("-d=.*")) {
+                    boolean bool1 = Boolean.parseBoolean(arg.replace("-d=",""));
+                    System.out.println("bool1="+bool1);
+
+
                 }
 
             }
         }
         Client client = new Client();
+        //生成后保存，之后调用再播放
         client.generate(content, savePath, url);
         client.test(savePath);
+        //传入文本直接播放语音
+        client.test(content,url);
 
     }
 }
