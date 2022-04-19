@@ -1,40 +1,48 @@
 import src.Client;
 
+import java.io.BufferedInputStream;
+
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-        String url = "http://127.0.0.1:8888/speech_synthesis";
+
+        String urlPath = "http://127.0.0.1:8888/speech_synthesis";
         String content = "你好";
         String savePath = "C:\\Users\\ADMIN\\Desktop\\语音\\1.wav";
+        boolean loop = false;
         if (args != null) {
             for (String arg : args) {
                 if (arg.matches("-save=.*")) {
                     savePath = arg.replace("-save=", "");
-                    System.out.println("savePath=" + savePath);
                 }
                 if (arg.matches("-h=.*")) {
-                    url = arg.replace("-h=", "");
-                    System.out.println("url=" + url);
+                    urlPath = arg.replace("-h=", "");
                 }
                 if (arg.matches("-c=.*")) {
                     content = arg.replace("-c=", "");
-                    System.out.println("content=" + content);
                 }
                 if (arg.matches("-d=.*")) {
-                    boolean bool1 = Boolean.parseBoolean(arg.replace("-d=",""));
-                    System.out.println("bool1="+bool1);
-
+                    loop = Boolean.parseBoolean(arg.replace("-d=", ""));
 
                 }
 
             }
         }
-        Client client = new Client();
-        //生成后保存，之后调用再播放
-        client.generate(content, savePath, url);
-        client.test(savePath);
-        //传入文本直接播放语音
-        client.test(content,url);
+        //保存到本地,从本地读取播放
+        Client client2 = new Client(content, savePath, urlPath, loop);
+        client2.generate(content, savePath, urlPath, loop);
+        client2.test(savePath);
+
+        //将初始的语音进行播放
+        Client client1 = new Client();
+        BufferedInputStream generate = client1.generate(content, urlPath);
+        client1.test(generate);
+
+        //调用循环输入的线程，启动依次播放的方法
+        Client client = new Client(content, urlPath);
+        Thread thread1 = new Thread(client);
+        thread1.start();
+        client.test(loop);
+
 
     }
 }
